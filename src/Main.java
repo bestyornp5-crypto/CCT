@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        // Khởi tạo hệ thống trò chơi LudoSys
+        LudoSys game = new LudoSys();
+
+        // Kích hoạt vòng lặp chính của trò chơi
+        game.PlayGame();
     }
 }

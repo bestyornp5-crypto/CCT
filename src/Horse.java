@@ -4,65 +4,58 @@ public class Horse {
     public static int LEV_3 = 3;
     public static int LEV_4 = 4;
 
-    public static boolean CAN_KICK = true;
-
-    public static boolean CANNOT_KICK = false;
-
-    public static boolean CAN_TRAP = true;
-    public static boolean CANNOT_TRAP = false;
-    int level;
-    String color;
+    private int level;
+    private int distanceGone;
+    private String color;
 
 
 
-    Square currentSquare;// Wait partner;
+    private boolean hasPlacedTrap;
+
+    Square currentSquare;
+
     public Horse(String color, int level ){
-        this.level = 1;
+        this.level = level;
         this.color = color;
-
-        // I need to calculation to can put down the horse depend on the color
-
-
-    }
-    // My Helper Method for Horse
-    private boolean CanKick(int level, int enemyLevel){
-        if (level > enemyLevel) {
-            return CanKick;
-        }
-        else {
-            return CannotKick;
-        }
-
+        this.distanceGone = 0;
+        this.currentSquare = null;
+        this.hasPlacedTrap = false; // Khởi tạo chưa đặt bẫy
     }
 
-
-    // My Public Method for Horse
-
-    public CanMove(int new_step){
-        // Instead of using use Dice
-        // I roll dice in other class and after I take the step ( 2 - 12 ) of dices to move
-
+    // --- THÊM CÁC HÀM GETTER/SETTER NÀY VÀO ---
+    public boolean HasPlacedTrap() {
+        return this.hasPlacedTrap;
     }
 
-    public boolean Attack(Horse enemy){
-        // So I will take the enemy by the next square and after that I will attack if the level of each other is correct
-        // Nếu như level > can kick (Only)
-
-    }
-
-    public boolean Trap(){
-        if (this.level > 1 ){
-            return CANNOT_TRAP;
-        }
-        else {
-            // Update the this Square has trap
-            // To do that --> the Square should cotain the current locationof this horse
-
-        }
+    public void SetPlacedTrap(boolean placedTrap) {
+        this.hasPlacedTrap = placedTrap;
     }
 
     public int GetLevel(){
         return this.level;
+    }
+    public String GetColour(){
+        return this.color;
+    }
+
+    public int GetDistance(){
+        return this.distanceGone;
+    }
+
+    public void SetDistance(int distance){
+        this.distanceGone = distance;
+    }
+    public Square GetCurrentSquare(){
+        return this.currentSquare;
+    }
+
+    public void SetCurrentSquare(Square square){
+        this.currentSquare = square;
+    }
+
+    public void SendToBase(){
+        this.currentSquare = null;
+        this.distanceGone = 0;
     }
 
 
